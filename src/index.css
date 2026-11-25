@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply font-body bg-paper text-ink antialiased; }
+h1, h2, h3 { @apply font-display; }
+:focus-visible { outline: 3px solid #F5A524; outline-offset: 2px; }
+.swiper-pagination-bullet { background: #fff !important; opacity: .6; }
+.swiper-pagination-bullet-active { background: #F5A524 !important; opacity: 1; }
+.swiper-button-next, .swiper-button-prev { color: #F5A524 !important; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ---- Saffron Table playful effects ---- */
+html.fx-on .rv:not(.in){opacity:0}
+.rv.in{animation:pop .8s cubic-bezier(.2,1.5,.3,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(36px) scale(.92) rotate(-1.5deg)}to{opacity:1;transform:none}}
+html.fx-on .draw path{stroke-dasharray:260;stroke-dashoffset:260}
+html.fx-on .draw.in path{stroke-dashoffset:0;transition:stroke-dashoffset 1.1s cubic-bezier(.6,0,.2,1) .2s}
+html.fx-heat .heat{filter:url(#heat)}
+.spin-slow{animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wisp{fill:none;stroke:rgba(255,255,255,.55);stroke-width:4;stroke-linecap:round;stroke-dasharray:60 200;opacity:0;animation:wisp 3.2s ease-in-out infinite}
+@keyframes wisp{0%{stroke-dashoffset:60;opacity:0;transform:translateY(10px)}30%{opacity:.85}100%{stroke-dashoffset:-140;opacity:0;transform:translateY(-14px)}}
+.flip{perspective:1000px;height:380px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.3,.5,1)}
+.flip.on .flip-in{transform:rotateY(180deg)}
+@media (hover:hover){.flip:hover .flip-in{transform:rotateY(180deg)}}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:1rem;overflow:hidden}
+.face.back{transform:rotateY(180deg)}
+@media (prefers-reduced-motion:reduce){.spin-slow,.wisp,.rv.in{animation:none}.flip-in{transition:none}}
