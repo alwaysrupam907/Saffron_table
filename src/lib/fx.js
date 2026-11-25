@@ -55,7 +55,12 @@ function burst(x, y) {
       if (p.sq) g.fillRect(-p.r, -p.r / 2, p.r * 2, p.r); else { g.beginPath(); g.arc(0, 0, p.r * 0.7, 0, 6.28); g.fill(); }
       g.restore();
     }
-    if (bp.length) requestAnimationFrame(loop); else { bRun = false; g.clearRect(0, 0, innerWidth, innerHeight); }
+    if (bp.length) {
+      requestAnimationFrame(loop);
+    } else {
+      bRun = false;
+      g.clearRect(0, 0, innerWidth, innerHeight);
+    }
   })();
 }
 
